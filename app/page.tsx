@@ -1,101 +1,102 @@
+"use client";
+import React from "react";
 import Image from "next/image";
 
-export default function Home() {
+const Page = () => {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div style={styles.container}>
+      {/* Header */}
+      <header style={styles.header}>
+        <h1 style={styles.title}>Dump No Fun 🚀</h1>
+        <p style={styles.tagline}>Because dumping is no fun! 😂</p>
+      </header>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Main content */}
+      <main style={styles.main}>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <Image src="/wagmi.png" alt="WAGMI" width={400} height={300} />
         </div>
+        <h2 style={styles.subtitle}>No Dumps, Only Fun!</h2>
+        <p style={styles.paragraph}>
+          Welcome to <strong>Dump No Fun</strong>, the ultimate{" "}
+          <strong>Uniswap v4 hook interface</strong> that keeps the crypto game
+          fair and fun!
+        </p>
+        <p style={styles.paragraph}>
+          We create tokens and liquidity pools that are 100% legit—no scammy
+          code, no rug pulls. Just pure, moon-bound potential!
+        </p>
+        <p style={styles.paragraph}>
+          Lock in your capital and show the world you're in it for the long
+          haul. Let's make crypto a better place together!
+        </p>
+        <button
+          style={styles.button}
+          onClick={() => (window.location.href = "/deploy")}
+        >
+          Get Started
+        </button>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+      {/* Footer
+      <footer style={styles.footer}>
+        <p style={styles.footerText}>Join the movement. Say no to dumps! 🌊</p>
+      </footer> */}
     </div>
   );
-}
+};
+
+const styles = {
+  container: {
+    fontFamily: "'Comic Sans MS', 'Comic Sans', cursive",
+    textAlign: "center" as "center",
+    color: "#fff",
+    backgroundColor: "#0d0d0d",
+    minHeight: "100vh",
+    padding: "0 20px",
+  },
+  header: {
+    padding: "20px 0",
+    backgroundColor: "#1a1a1a",
+  },
+  title: {
+    fontSize: "3rem",
+  },
+  tagline: {
+    fontSize: "1.5rem",
+    marginTop: "10px",
+  },
+  main: {
+    padding: "40px 0",
+  },
+  subtitle: {
+    fontSize: "2rem",
+    marginBottom: "20px",
+  },
+  paragraph: {
+    fontSize: "1.2rem",
+    lineHeight: "1.6",
+    marginBottom: "20px",
+  },
+  button: {
+    fontSize: "1.5rem",
+    padding: "15px 30px",
+    backgroundColor: "#ff007a",
+    color: "#fff",
+    border: "none",
+    borderRadius: "30px",
+    cursor: "pointer",
+  },
+  footer: {
+    padding: "20px 0",
+    backgroundColor: "#1a1a1a",
+    position: "fixed" as "fixed",
+    width: "100%",
+    bottom: 0,
+  },
+  footerText: {
+    fontSize: "1rem",
+  },
+};
+
+export default Page;
