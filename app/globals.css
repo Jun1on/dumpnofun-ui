@@ -83,3 +83,7 @@ body {
     --chart-5: 340 75% 55%;
   }
 }
+
+*::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, and Opera */
+}
