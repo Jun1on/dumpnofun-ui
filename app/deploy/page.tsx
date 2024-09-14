@@ -14,18 +14,12 @@ export default function Deploy() {
   const [transactionHash, setTransactionHash] = React.useState<string | null>(
     null
   );
+  const [tokenDetails, setTokenDetails] = React.useState<{
+    name: string;
+    symbol: string;
+  } | null>(null);
 
-  const { data, error, isPending, writeContract } = useWriteContract({
-    address: deployments.hook as `0x${string}`,
-    abi: hookABI,
-    functionName: "deployPool",
-    onSuccess(data) {
-      setTransactionHash(data.hash);
-    },
-    onError(error) {
-      console.error("Transaction Error:", error);
-    },
-  });
+  const { data, error, isPending, writeContract } = useWriteContract();
 
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -38,6 +32,8 @@ export default function Deploy() {
     const symbol = formData.get("symbol") as string;
     const decimals = Number(formData.get("decimals")) || 18;
     const totalSupplyInput = formData.get("totalSupply") as string;
+
+    setTokenDetails({ name, symbol });
 
     writeContract({
       address: deployments.hook,
@@ -115,6 +111,18 @@ export default function Deploy() {
           </div>
         )}
       </form>
+
+      {data && tokenDetails && (
+        <div style={styles.popup}>
+          <h2>{tokenDetails.name} has been deployed!</h2>
+          <button
+            onClick={() => router.push(`/token/${tokenDetails.symbol}`)}
+            style={styles.popupButton}
+          >
+            View {tokenDetails.symbol}
+          </button>
+        </div>
+      )}
     </div>
   );
 }
@@ -187,5 +195,27 @@ const styles = {
   link: {
     color: "#00FFA3",
     textDecoration: "underline",
+  },
+  popup: {
+    position: "fixed" as const,
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    backgroundColor: "#1E1E1E",
+    padding: "30px",
+    borderRadius: "10px",
+    boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+    textAlign: "center" as const,
+    zIndex: 1000,
+  },
+  popupButton: {
+    padding: "10px 20px",
+    fontSize: "1rem",
+    backgroundColor: "#00FFA3",
+    color: "#000",
+    border: "none",
+    borderRadius: "5px",
+    cursor: "pointer",
+    marginTop: "20px",
   },
 };

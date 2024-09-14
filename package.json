@@ -11,9 +11,11 @@
   "dependencies": {
     "@tanstack/react-query": "^5.56.2",
     "@web3modal/wagmi": "^5.1.8",
+    "chart.js": "^4.4.4",
     "ethers": "5.7",
     "next": "14.2.11",
     "react": "^18",
+    "react-chartjs-2": "^5.2.0",
     "react-confetti": "^6.1.0",
     "react-dom": "^18",
     "viem": "^2.21.6",
