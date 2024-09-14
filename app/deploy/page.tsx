@@ -11,17 +11,11 @@ import { useRouter } from "next/navigation";
 export default function Deploy() {
   const { isConnected } = useAccount();
   const router = useRouter();
-  const [showConfetti, setShowConfetti] = React.useState(false);
   const [transactionHash, setTransactionHash] = React.useState<string | null>(
     null
   );
 
-  const {
-    data: txData,
-    error,
-    isPending,
-    writeContract,
-  } = useWriteContract({
+  const { data, error, isPending, writeContract } = useWriteContract({
     address: deployments.hook as `0x${string}`,
     abi: hookABI,
     functionName: "deployPool",
@@ -62,7 +56,7 @@ export default function Deploy() {
 
   return (
     <div style={styles.container}>
-      {showConfetti && <Confetti />}
+      {data && <Confetti />}
       <h1 style={styles.title}>🚀 Launch Your Token</h1>
       <p style={styles.subtitle}>Deploy a new token on the blockchain</p>
       <form onSubmit={submit} style={styles.form}>
